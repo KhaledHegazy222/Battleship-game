@@ -1,1 +1,42 @@
-<!doctype html><html><head><meta charset="utf-8"/><title>Webpack App</title><script defer="defer" src="main.js"></script></head><body><header><h1>Battleship</h1></header><section class="game-section"><div class="game-board player-board"><h2 class="grid-title">Khaled's board</h2><div class="orientation-container"><p style="text-align: center; font-size: 1.3rem; font-weight: 500">Ship Orientation</p><input type="radio" id="horizontal-input" name="orientation" value="horizontal" checked="checked"/> <label for="horizontal-input">Horizontal</label> <input type="radio" id="vertical-input" name="orientation" value="vertical"/> <label for="vertical-input">Vertical</label></div><div class="game-grid"></div></div><div class="game-board computer-board"><h2 class="grid-title">Computer's board</h2><div class="game-grid"></div></div></section></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BattleShip</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <header>
+      <h1>Battleship</h1>
+    </header>
+    <section class="game-section">
+      <div class="game-board player-board">
+        <h2 class="grid-title">Khaled's board</h2>
+        <div class="orientation-container">
+          <p style="text-align: center; font-size: 1.3rem; font-weight: 500">
+            Ship Orientation
+          </p>
+          <input
+            type="radio"
+            id="horizontal-input"
+            name="orientation"
+            value="horizontal"
+            checked
+          />
+          <label for="horizontal-input">Horizontal</label>
+          <input
+            type="radio"
+            id="vertical-input"
+            name="orientation"
+            value="vertical"
+          />
+          <label for="vertical-input">Vertical</label>
+        </div>
+        <div class="game-grid"></div>
+      </div>
+      <div class="game-board computer-board">
+        <h2 class="grid-title">Computer's board</h2>
+        <div class="game-grid"></div>
+      </div>
+    </section>
+  </body>
+</html>
