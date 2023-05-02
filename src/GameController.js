@@ -7,12 +7,6 @@ import {
   sinkCell,
   newShip,
 } from "./DOM";
-/* The game board consists of :
-  (1) Ship [4] (Horizontal)
-  (1) Ship [3] (Vertical)
-  (2) Ship [2] (Vertical / Horizontal)
-  (2) Ship [1] (None)
-*/
 
 let player;
 let computer;
@@ -33,23 +27,55 @@ async function initGame() {
   const addShip = (args) => {
     player.gameBoard.addShip(...args);
   };
+  const addRandomShip = (length) => {
+    while (true) {
+      const row = Math.floor(Math.random() * 10);
+      const column = Math.floor(Math.random() * 10);
+      const orientation = Math.floor(Math.random() * 2)
+        ? "vertical"
+        : "horizontal";
+      let good = true;
+      for (let i = 0; i < length; i++) {
+        const newRow = row + (orientation === "vertical" ? i : 0);
+        const newCol = column + (orientation === "horizontal" ? i : 0);
+        if (
+          newRow >= 10 ||
+          newCol >= 10 ||
+          !computer.gameBoard.canPlaceShip(newRow, newCol)
+        ) {
+          good = false;
+          break;
+        }
+      }
+      if (good) {
+        return [row, column, length, orientation];
+      }
+      console.log("trying");
+    }
+  };
 
+  await getShip(5).then(addShip);
   await getShip(4).then(addShip);
   await getShip(3).then(addShip);
   await getShip(2).then(addShip);
   await getShip(2).then(addShip);
+  await getShip(2).then(addShip);
+  await getShip(1).then(addShip);
   await getShip(1).then(addShip);
   await getShip(1).then(addShip);
 
   gameStart = true;
 
   computer = new Player();
-  computer.gameBoard.addShip(4, 2, 4, "horizontal");
-  computer.gameBoard.addShip(6, 3, 3, "vertical");
-  computer.gameBoard.addShip(1, 6, 2, "horizontal");
-  computer.gameBoard.addShip(2, 9, 2, "vertical");
-  computer.gameBoard.addShip(7, 5, 1, "horizontal");
-  computer.gameBoard.addShip(0, 0, 1, "vertical");
+  computer.gameBoard.addShip(...addRandomShip(5));
+  computer.gameBoard.addShip(...addRandomShip(4));
+  computer.gameBoard.addShip(...addRandomShip(3));
+  computer.gameBoard.addShip(...addRandomShip(2));
+  computer.gameBoard.addShip(...addRandomShip(2));
+  computer.gameBoard.addShip(...addRandomShip(1));
+  computer.gameBoard.addShip(...addRandomShip(1));
+  computer.gameBoard.addShip(...addRandomShip(1));
+  alert("Start Fire!!");
 }
 
 function render() {

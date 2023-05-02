@@ -10,6 +10,8 @@ export default class GameBoard {
 
   addShip(row, column, length, orientation) {
     this.#ships.push(new Ship(row, column, length, orientation));
+    console.log("##################");
+    console.log(this.#ships);
   }
 
   isLegalMove(row, column) {
