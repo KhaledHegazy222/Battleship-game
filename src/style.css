@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+header > h1 {
+  text-align: center;
+}
+
+.game-section {
+  display: flex;
+}
+.orientation-container {
+  margin: 40px;
+}
+.game-board {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.game-grid {
+  display: grid;
+  grid-template: repeat(10, 50px) / repeat(10, 50px);
+  gap: 4px;
+}
+
+.grid-cell {
+  background-color: rgb(224, 224, 224);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.computer-board .grid-cell:not(.attacked-cell):not(.missed-cell):hover {
+  background-color: rgb(159, 159, 159);
+}
+.missed-cell {
+  background-color: rgb(121, 121, 121);
+}
+
+.grid-cell.attacked-cell {
+  background-color: rgb(192, 37, 37);
+}
+
+.grid-cell > .skull-img {
+  width: 80%;
+  aspect-ratio: 1/ 1;
+  display: none;
+}
+.grid-cell.attacked-cell.sunk-cell > .skull-img {
+  display: unset;
+}
+
+.new-ship,
+.fixed-new-ship {
+  background-color: green;
+}
